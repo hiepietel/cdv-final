@@ -10,7 +10,7 @@ public class LeadService : ILeadService
 
     public async Task<Lead> CreateLead(Lead lead)
     {
-        lead.DateCreated = DateTime.Now;
+        lead.DateCreated = DateTime.UtcNow;
         await _appContext.Leads.AddAsync(lead);
         await _appContext.SaveChangesAsync();
         return lead;
@@ -40,12 +40,12 @@ public class LeadService : ILeadService
         if(leadToUpdate == null){
             return "";
         }
-        leadToUpdate.DateLastUpdated = DateTime.Now;
-        leadToUpdate.FirstName = lead.FirstName;
-        leadToUpdate.LastName = lead.FirstName;
-        leadToUpdate.Email = lead.Email;
-        leadToUpdate.Company = lead.Company;
-        leadToUpdate.Note = lead.Note;
+        leadToUpdate.DateLastUpdated = DateTime.UtcNow;
+        leadToUpdate.first_name = lead.first_name;
+        leadToUpdate.last_name = lead.first_name;
+        leadToUpdate.email = lead.email;
+        leadToUpdate.company = lead.company;
+        leadToUpdate.note = lead.note;
         await _appContext.SaveChangesAsync();
         return "";
     }
