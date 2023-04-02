@@ -32,6 +32,11 @@ public class UserService : IUserService
 
     public async Task<string> Register(UserDto userDto)
     {
+        if(userDto.email == null || userDto.hashed_password == null)
+        {
+            return "";
+        }
+
         var userExists = await _appContext.Users.FirstOrDefaultAsync(x => x.Email == userDto.email);
         if (userExists != null)
         {
@@ -52,14 +57,21 @@ public class UserService : IUserService
         return token;
     }
 
-    public async Task GetMe()
+    public async Task<User> GetMe()
     {
         var result = string.Empty;
         if (_httpContexAccessor.HttpContext != null)
         {
-            result = _httpContexAccessor.HttpContext.User.FindFirstValue(ClaimTypes.Name);
+            result = _httpContexAccessor.HttpContext.User.FindFirstValue(ClaimTypes.Email);
         }
-        Console.WriteLine(result);
+
+        var userExists = await _appContext.Users.FirstOrDefaultAsync(x => x.Email == result);
+        if (userExists == null)
+        {
+            return new User();
+        }
+
+        return userExists;
     }
 
     private string CreateToken(User user)
@@ -70,7 +82,9 @@ public class UserService : IUserService
             };
 
         var apiToken = _configuration.GetSection("AppSettings:Token").Value;
-
+        if(apiToken == null){
+            return "";
+        }
         var key = new SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes(apiToken));
 
         var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha512Signature);

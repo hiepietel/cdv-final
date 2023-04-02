@@ -19,6 +19,9 @@ public class LeadService : ILeadService
     public async Task<string> DeleteLead(int leadId)
     {
         var lead = await _appContext.Leads.FirstOrDefaultAsync(x => x.Id == leadId);
+        if(lead == null){
+            return "";
+        }
         _appContext.Leads.Remove(lead);
         return "";
     }
@@ -26,6 +29,9 @@ public class LeadService : ILeadService
     public async Task<Lead> GetLead(int leadId)
     {
         var response = await _appContext.Leads.FirstOrDefaultAsync(x => x.Id == leadId);
+        if(response == null){
+            return new Lead();
+        }
         return response;
     }
 
