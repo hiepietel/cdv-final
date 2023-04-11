@@ -29,7 +29,10 @@ const Register = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (password === confirmationPassword || true  && password.length > 1) {
+    if (true){
+      submitRegistration();
+    }
+    if (password === confirmationPassword && password.length > 5) {
       submitRegistration();
     } else {
       setErrorMessage(
