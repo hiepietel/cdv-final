@@ -19,7 +19,8 @@ const LeadModal = ({ active, handleModal, token, id, setErrorMessage }) => {
       const response = await fetch(`/api/leads/${id}`, requestOptions);
 
       if (!response.ok) {
-        setErrorMessage("Could not get the lead");
+        //setErrorMessage("Could not get the lead");
+        console.log("Could not get the lead");
       } else {
         const data = await response.json();
         setFirstName(data.first_name);
@@ -61,7 +62,8 @@ const LeadModal = ({ active, handleModal, token, id, setErrorMessage }) => {
     };
     const response = await fetch("/api/leads", requestOptions);
     if (!response.ok) {
-      setErrorMessage("Something went wrong when creating lead");
+      //setErrorMessage("Something went wrong when creating lead");
+      console.log("Something went wrong when creating lead");
     } else {
       cleanFormData();
       handleModal();
@@ -86,7 +88,8 @@ const LeadModal = ({ active, handleModal, token, id, setErrorMessage }) => {
     };
     const response = await fetch(`/api/leads/${id}`, requestOptions);
     if (!response.ok) {
-      setErrorMessage("Something went wrong when updating lead");
+      //setErrorMessage("Something went wrong when updating lead");
+      console.log("Something went wrong when updating lead");
     } else {
       cleanFormData();
       handleModal();
