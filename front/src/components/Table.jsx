@@ -34,23 +34,23 @@ const Table = () => {
     //getLeads();
   };
 
-  const getLeads = async () => {
-    const requestOptions = {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: "Bearer " + token,
-      },
-    };
-    const response = await fetch("/api/leads", requestOptions);
-    if (!response.ok) {
-      setErrorMessage("Something went wrong. Couldn't load the leads");
-    } else {
-      const data = await response.json();
-      setLeads(data);
-      setLoaded(true);
-    }
-  };
+  // const getLeads = async () => {
+  //   const requestOptions = {
+  //     method: "GET",
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //       Authorization: "Bearer " + token,
+  //     },
+  //   };
+  //   const response = await fetch("/api/leads", requestOptions);
+  //   if (!response.ok) {
+  //     setErrorMessage("Something went wrong. Couldn't load the leads");
+  //   } else {
+  //     const data = await response.json();
+  //     setLeads(data);
+  //     setLoaded(true);
+  //   }
+  // };
 
   useEffect(() => {
     //getLeads();
