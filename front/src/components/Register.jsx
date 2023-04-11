@@ -29,7 +29,7 @@ const Register = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (password === confirmationPassword && password.length > 5) {
+    if (password === confirmationPassword || true  && password.length > 1) {
       submitRegistration();
     } else {
       setErrorMessage(
@@ -46,7 +46,7 @@ const Register = () => {
           <label className="label">Email Address</label>
           <div className="control">
             <input
-              type="email"
+              //type="email"
               placeholder="Enter email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
@@ -59,7 +59,7 @@ const Register = () => {
           <label className="label">Password</label>
           <div className="control">
             <input
-              type="password"
+              //type="password"
               placeholder="Enter password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
@@ -72,7 +72,7 @@ const Register = () => {
           <label className="label">Confirm Password</label>
           <div className="control">
             <input
-              type="password"
+              //type="password"
               placeholder="Enter password"
               value={confirmationPassword}
               onChange={(e) => setConfirmationPassword(e.target.value)}

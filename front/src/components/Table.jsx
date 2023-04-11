@@ -53,6 +53,8 @@ const Table = () => {
   // };
 
   useEffect(() => {
+    setLeads([]);
+    setLoaded(false)
     //getLeads();
   }, []);
 
