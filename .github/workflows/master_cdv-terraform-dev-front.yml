@@ -25,6 +25,9 @@ jobs:
         with:
           node-version: '18.x'
 
+      - name: show me dir
+        run: ls
+        
       - name: npm install, build, and test
         run: |
           npm install
