@@ -31,7 +31,7 @@ const Table = () => {
       setErrorMessage("Failed to delete lead");
     }
 
-    getLeads();
+    //getLeads();
   };
 
   const getLeads = async () => {
@@ -53,12 +53,12 @@ const Table = () => {
   };
 
   useEffect(() => {
-    getLeads();
+    //getLeads();
   }, []);
 
   const handleModal = () => {
     setActiveModal(!activeModal);
-    getLeads();
+    //getLeads();
     setId(null);
   };
 
