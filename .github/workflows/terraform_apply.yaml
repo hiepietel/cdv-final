@@ -6,6 +6,7 @@ on:
       - "infra/schema/**"
     types:
       - closed
+  workflow_dispatch:
 
 jobs:
   Apply:
