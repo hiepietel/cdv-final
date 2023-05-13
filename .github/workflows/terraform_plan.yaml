@@ -2,7 +2,7 @@ name: Terraform Test Infrastructure
 on:
     pull_request:
       paths:
-        - "Terraform/**"
+        - "infra/schema/**"
         - ".github/workflows/terraform_plan.yaml"
       types:
         - opened
@@ -26,15 +26,15 @@ jobs:
 
             - name: Terraform fmt
               run: terraform fmt -check
-              working-directory: ./Terraform
+              working-directory: ./infra/schem
 
             - name: Terraform init
               run: terraform init
-              working-directory: ./Terraform
+              working-directory: ./infra/schem
 
             - name: Terraform validate
               run: terraform validate
-              working-directory: ./Terraform
+              working-directory: ./infra/schem
 
             - name: Terraform plan
               run: |
@@ -46,7 +46,7 @@ jobs:
                 --var="prefix=${{ env.perfix }}" \
                 --var="admin_password=${{ env.admin_password }}" \
                 --var="environment=${{ env.environment }}"
-              working-directory: ./Terraform
+              working-directory: ./infra/schem
               env:
                 application: ${{ vars.APPLICATION }}
                 owner: ${{ vars.OWNER }}
