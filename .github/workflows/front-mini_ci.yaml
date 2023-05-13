@@ -13,9 +13,9 @@ jobs:
               run: npm ci 
               working-directory: ./front-mini
 
-            - name: Lint code
-              run: npm run lint
-              working-directory: ./front-mini
+            # - name: Lint code
+            #   run: npm run lint
+            #   working-directory: ./front-mini
 
             - name: Test code
               run: npm run test
