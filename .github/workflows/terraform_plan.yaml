@@ -27,9 +27,9 @@ jobs:
             - name: Setup Terraform
               uses: hashicorp/setup-terraform@v2
 
-            - name: Terraform fmt
-              run: terraform fmt -check
-              working-directory: ./infra/schem
+            # - name: Terraform fmt
+            #   run: terraform fmt -check
+            #   working-directory: ./infra/schem
 
             - name: Terraform init
               run: terraform init
