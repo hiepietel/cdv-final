@@ -30,6 +30,12 @@ jobs:
             - name: Terraform Destroy
               run: |
                 terraform destroy \
-                --var
+                --var="application=${{ env.application }}" \
+                --var="environments=[\"${{ env.environment }}\"]" \
+                --var="owner=${{ env.owner }}" \
+                --var="location=${{ env.location }}" \
+                --var="prefix=${{ env.perfix }}" \
+                --var="admin_password=${{ env.admin_password }}" \
+                --var="environment=${{ env.environment }}" \
                 --auto-approve
               working-directory: ./infra/schema
