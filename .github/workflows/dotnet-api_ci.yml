@@ -41,7 +41,7 @@ jobs:
       - name: 'Deploy to Azure WebApp'
         uses: azure/webapps-deploy@v1
         with:
-          app-name: ${{ env.AZURE_WEBAPP_NAME }}
+          app-name: cdv-actions-dev-api
           publish-profile: ${{ secrets.ARM_CLIENT_SECRET }}
           package: ${{env.DOTNET_ROOT}}/myapp
   # deploy:
