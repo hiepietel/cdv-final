@@ -1,16 +1,11 @@
 name: Terraform Test Infrastructure
 on:
-    push:
-        branches:
-        - master
     pull_request:
-      paths:
-        - "infra/schema/**"
-        - ".github/workflows/terraform_plan.yaml"
       types:
         - opened
         - synchronize
         - reopened
+    workflow_dispatch:
 jobs:
     Test:
         name: Test Infrastructure
