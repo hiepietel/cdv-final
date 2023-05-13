@@ -41,5 +41,5 @@ jobs:
         needs: Build
         steps: 
             - name: Deploy
-              run: echo deploying
+              run: echo "deploying..." 
               working-directory: ./front-mini
