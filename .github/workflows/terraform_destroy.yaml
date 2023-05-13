@@ -32,4 +32,4 @@ jobs:
                 terraform destroy \
                 --var
                 --auto-approve
-              working-directory: /infra/schema
+              working-directory: ./infra/schema

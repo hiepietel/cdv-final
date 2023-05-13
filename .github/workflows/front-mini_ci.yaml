@@ -1,6 +1,7 @@
 name: Deploy frontend
 on: 
-  push:
+  #push:
+  workflow_dispatch:
 
 jobs:
     # Test: 
@@ -41,5 +42,5 @@ jobs:
         needs: Build
         steps: 
             - name: Deploy
-              run: echo "deploying..." 
+              run: ls -a
               working-directory: ./front-mini
