@@ -33,11 +33,11 @@ jobs:
 
             - name: Terraform init
               run: terraform init
-              working-directory: ./infra/schem
+              working-directory: ./infra/schema
 
             - name: Terraform validate
               run: terraform validate
-              working-directory: ./infra/schem
+              working-directory: ./infra/schema
 
             - name: Terraform plan
               run: |
@@ -49,7 +49,7 @@ jobs:
                 --var="prefix=${{ env.perfix }}" \
                 --var="admin_password=${{ env.admin_password }}" \
                 --var="environment=${{ env.environment }}"
-              working-directory: ./infra/schem
+              working-directory: ./infra/schema
               env:
                 application: ${{ vars.APPLICATION }}
                 owner: ${{ vars.OWNER }}
