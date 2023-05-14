@@ -44,7 +44,7 @@ jobs:
       - name: Download Artifact
         uses: actions/download-artifact@v2
         with:
-          name: app
+          name: .net-app
           path: ${{env.DOTNET_ROOT}}/myapp
 
       - name: Azure Login
@@ -56,4 +56,4 @@ jobs:
         uses: azure/webapps-deploy@v1
         with:
           app-name: '${{vars.PREFIX}}-${{vars.APPLICATION }}-${{vars.ENVIRONMENT}}-api'
-          package: app
+          package: .net-app
