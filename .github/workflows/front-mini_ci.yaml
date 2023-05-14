@@ -85,6 +85,6 @@ jobs:
           uses: azure/webapps-deploy@v1
           with: 
             app-name: '${{vars.PREFIX}}-${{vars.APPLICATION }}-${{vars.ENVIRONMENT}}-front'
-            package: '.'
+            package: './front-mini'
 
             
