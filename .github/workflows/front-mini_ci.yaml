@@ -55,10 +55,12 @@ jobs:
         - name: Zip artifact for deployment
           run: zip release.zip ./build/* -r
           working-directory: ./front-mini
+        
         - name: ls 2
           run: |
             ls -a       
           working-directory: ./front-mini
+
         - name: Upload artifact for deployment job
           uses: actions/upload-artifact@v2
           with:
@@ -77,10 +79,11 @@ jobs:
             name: node-app
         - name: unzip artifact for deployment
           run: unzip release.zip
+
         - name: 'Deploy to Azure WebApp'
           uses: azure/webapps-deploy@v1
           with: 
             app-name: '${{vars.PREFIX}}-${{vars.APPLICATION }}-${{vars.ENVIRONMENT}}-front'
-            package: node-app
+            package: '.'
 
             
