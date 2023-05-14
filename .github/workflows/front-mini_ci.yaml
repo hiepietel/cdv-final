@@ -98,7 +98,7 @@ jobs:
           with: 
             app-name: '${{vars.PREFIX}}-${{vars.APPLICATION }}-${{vars.ENVIRONMENT}}-front'
             slot-name: 'production'
-            package: build
+            package: front-mini/build
 
         - name: Remove artifact
           run: rm -rf front-mini/build
