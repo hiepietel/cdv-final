@@ -45,17 +45,33 @@ jobs:
             # deploy to Azure Web App.
             npm install         
           working-directory: ./front-mini
+
+
+              # Zip artifacts to speed things up
+        - name: Zip artifact for deployment
+          run: zip release.zip ./* -qr
+          working-directory: ./front-mini
+
+        - name: Upload artifact for deployment job
+          uses: actions/upload-artifact@v2
+          with:
+            name: node-app
+            path: release.zip
 #npm run build --if-present
 #npm run test --if-present
         - name: Azure Login
           uses: azure/login@v1
           with: 
             creds: '{"clientId":"${{ secrets.ARM_CLIENT_ID }}","clientSecret":"${{ secrets.ARM_CLIENT_SECRET }}","subscriptionId":"${{ secrets.ARM_SUBSCRIPTION_ID }}","tenantId":"${{ secrets.ARM_TENANT_ID }}"}'  
-        
+        - name: Download artifact from build job
+          uses: actions/download-artifact@v2
+          with:
+            name: node-app
+    
         - name: 'Deploy to Azure WebApp'
           uses: azure/webapps-deploy@v1
           with: 
             app-name: '${{vars.PREFIX}}-${{vars.APPLICATION }}-${{vars.ENVIRONMENT}}-front'
-            package: .
+            package: release.zip
         
             
