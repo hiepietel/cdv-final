@@ -74,7 +74,7 @@ jobs:
         #     path: ./front-mini/release.zip
 
         - name: Upload artifact
-          uses: actions/upload-artifact@v2
+          uses: actions/upload-artifact@v3
           with:
             name: build
             path: front-mini/build
@@ -85,10 +85,10 @@ jobs:
           uses: azure/login@v1
           with: 
             creds: '{"clientId":"${{ secrets.ARM_CLIENT_ID }}","clientSecret":"${{ secrets.ARM_CLIENT_SECRET }}","subscriptionId":"${{ secrets.ARM_SUBSCRIPTION_ID }}","tenantId":"${{ secrets.ARM_TENANT_ID }}"}'  
-        # - name: Download artifact from build job
-        #   uses: actions/download-artifact@v2
-        #   with:
-        #     name: front-mini
+        - name: Download artifact from build job
+          uses: actions/download-artifact@v2
+          with:
+            name: build
         
         # - name: unzip artifact for deployment
         #   run: unzip ./front-mini/release.zip
@@ -98,7 +98,7 @@ jobs:
           with: 
             app-name: '${{vars.PREFIX}}-${{vars.APPLICATION }}-${{vars.ENVIRONMENT}}-front'
             slot-name: 'production'
-            package: ${{ github.workspace }}/front-mini/build
+            package: build
 
         - name: Remove artifact
           run: rm -rf front-mini/build
