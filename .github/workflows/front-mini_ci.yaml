@@ -1,4 +1,4 @@
-name: Deploy frontend
+name: Build and deploy front-mini
 on: 
   workflow_dispatch:
 
