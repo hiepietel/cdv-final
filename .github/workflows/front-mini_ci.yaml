@@ -57,21 +57,22 @@ jobs:
           with:
             name: node-app
             path: release.zip
+          
 #npm run build --if-present
 #npm run test --if-present
         - name: Azure Login
           uses: azure/login@v1
           with: 
             creds: '{"clientId":"${{ secrets.ARM_CLIENT_ID }}","clientSecret":"${{ secrets.ARM_CLIENT_SECRET }}","subscriptionId":"${{ secrets.ARM_SUBSCRIPTION_ID }}","tenantId":"${{ secrets.ARM_TENANT_ID }}"}'  
-        - name: Download artifact from build job
-          uses: actions/download-artifact@v2
-          with:
-            name: node-app
+        # - name: Download artifact from build job
+        #   uses: actions/download-artifact@v2
+        #   with:
+        #     name: node-app
     
         - name: 'Deploy to Azure WebApp'
           uses: azure/webapps-deploy@v1
           with: 
             app-name: '${{vars.PREFIX}}-${{vars.APPLICATION }}-${{vars.ENVIRONMENT}}-front'
             package: release.zip
-        
+
             
