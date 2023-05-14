@@ -92,6 +92,6 @@ jobs:
           with: 
             app-name: '${{vars.PREFIX}}-${{vars.APPLICATION }}-${{vars.ENVIRONMENT}}-front'
             slot-name: 'production'
-            package: './front-mini/build'
+            package: './front-mini'
 
             
