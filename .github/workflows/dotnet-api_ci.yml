@@ -49,4 +49,4 @@ jobs:
         uses: azure/webapps-deploy@v1
         with:
           app-name: '${{vars.PREFIX}}-${{vars.APPLICATION }}-${{vars.PREFIX}}-api'
-          package: '${{ env.DOTNET_ROOT }}/myapp'
+          package: .
