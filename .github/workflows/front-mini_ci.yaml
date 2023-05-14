@@ -48,7 +48,8 @@ jobs:
           working-directory: ./front-mini
         - name: ls 
           run: |
-            ls -a       
+            ls -a  
+            pwd
           working-directory: ./front-mini
 
         #       # Zip artifacts to speed things up
