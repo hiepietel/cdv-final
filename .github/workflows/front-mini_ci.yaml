@@ -77,7 +77,7 @@ jobs:
           uses: actions/upload-artifact@v3
           with:
             name: node_build
-            path: front-mini/build
+            path: front-mini
 
 #npm run build --if-present
 #npm run test --if-present
@@ -97,7 +97,7 @@ jobs:
           uses: azure/webapps-deploy@v1
           with: 
             app-name: '${{vars.PREFIX}}-${{vars.APPLICATION }}-${{vars.ENVIRONMENT}}-front'
-            package: front-mini/build
+            package: node_build
 
         - name: Remove artifact
           run: rm -rf front-mini/build
