@@ -46,6 +46,7 @@ jobs:
         uses: azure/webapps-deploy@v1
         with:
           app-name: cdv-actions-dev-api
+          package: '${{ env.DOTNET_ROOT }}/myapp'
 
   # deploy:
   #   runs-on: ubuntu-latest
