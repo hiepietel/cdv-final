@@ -58,7 +58,8 @@ jobs:
         
         - name: ls 2
           run: |
-            ls -a       
+            ls -a    
+            dir   
           working-directory: ./front-mini
 
         # - name: Upload artifact for deployment job
