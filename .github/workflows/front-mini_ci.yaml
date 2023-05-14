@@ -90,7 +90,7 @@ jobs:
   
         - name: Zip build folder
           run: |
-            cd front-mini/build
+            cd front-mini
             zip -r ../build.zip .
   
         - name: Create build artifact
