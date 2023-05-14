@@ -12,8 +12,10 @@ on:
 defaults:
   run:
     working-directory: api-dotnet 
-
+env: 
+  DOTNET_ROOT : root
 jobs:
+
   Build:
     runs-on: ubuntu-latest
     steps:
