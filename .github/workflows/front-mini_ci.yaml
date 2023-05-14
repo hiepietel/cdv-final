@@ -43,7 +43,6 @@ jobs:
           run: |
             # Build and test the project, then
             # deploy to Azure Web App.
-            npm install
             npm run build --if-present         
           working-directory: ./front-mini
         - name: ls 
@@ -87,6 +86,7 @@ jobs:
           uses: azure/webapps-deploy@v1
           with: 
             app-name: '${{vars.PREFIX}}-${{vars.APPLICATION }}-${{vars.ENVIRONMENT}}-front'
-            package: 'front-mini'
+            slot-name: 'production'
+            package: './front-mini/build'
 
             
