@@ -9,7 +9,7 @@ on:
       - master
     paths:
       - "dotnet-api/**"
-      - ".github/workflows/dotnet-api_ci.yml"
+      - ".github/workflows/dotnet-api_ci.yaml"
   workflow_dispatch:
 
 defaults:
