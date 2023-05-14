@@ -84,7 +84,7 @@ jobs:
         #     path: ./front-mini/release.zip
         - name: Install dependencies
           run: npm install
-  
+          working-directory: ./front-mini
         - name: Build app
           run: npm run build --prefix front-mini/
   
