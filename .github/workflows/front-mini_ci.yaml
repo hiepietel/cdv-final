@@ -50,9 +50,9 @@ jobs:
           run: npm ci --ignore-scripts
           working-directory: ./front-mini
 
-        - name: Install dependencies
-          run: npm install
-          working-directory: ./front-mini
+        # - name: Install dependencies
+        #   run: npm install
+        #   working-directory: ./front-mini
 
         - name: npm install, build, and test
           run: |
