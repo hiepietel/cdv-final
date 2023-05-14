@@ -97,7 +97,7 @@ jobs:
           uses: azure/webapps-deploy@v1
           with: 
             app-name: '${{vars.PREFIX}}-${{vars.APPLICATION }}-${{vars.ENVIRONMENT}}-front'
-            package: node_build
+            package: ${{ github.workspace }}/node_build
 
         - name: Remove artifact
           run: rm -rf front-mini/build
