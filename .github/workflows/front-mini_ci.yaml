@@ -72,7 +72,13 @@ jobs:
         #   with:
         #     name: front-mini
         #     path: ./front-mini/release.zip
-          
+
+        - name: Upload artifact
+          uses: actions/upload-artifact@v2
+          with:
+            name: build
+            path: front-mini/build
+
 #npm run build --if-present
 #npm run test --if-present
         - name: Azure Login
@@ -92,6 +98,9 @@ jobs:
           with: 
             app-name: '${{vars.PREFIX}}-${{vars.APPLICATION }}-${{vars.ENVIRONMENT}}-front'
             slot-name: 'production'
-            package: './front-mini'
+            package: ${{ github.workspace }}/front-mini/build
+
+        - name: Remove artifact
+          run: rm -rf front-mini/build
 
             
