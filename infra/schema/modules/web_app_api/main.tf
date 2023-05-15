@@ -20,10 +20,18 @@ resource "azurerm_linux_web_app" "webapp" {
 
   site_config {
     application_stack {
-      dotnet_version = "6.0"
+      dotnet_version = "6.0"  
+    }   
+    cors {
+      allowed_origins = ["*"]
     }
   }
 
+  connection_string {
+  name = "DefaultConnection"
+  type = "PostgreSQL"
+  value = "Server=${var.prefix}-${var.application}-${var.environment}-psql-dev-1.postgres.database.azure.com;Database=postgress;Port=5432;User Id=postgres@cdv-devops-final-psql-dev-1;Password=Q1w2e3r4t5y6.;Ssl Mode=Require;Trust Server Certificate=true"
+  }
 
   app_settings = {
     POSTGRES_USER     = "${var.postgres_user}@${var.postgres_host}"
