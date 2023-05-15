@@ -6,7 +6,6 @@ public class AppContext : DbContext
     public AppContext(IConfiguration configuration)
     {
         _configuration = configuration;
-        this.Database.EnsureCreated();
     }
     public DbSet<User> Users { get; set; }
     public DbSet<Lead> Leads { get; set; }
