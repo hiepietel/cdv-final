@@ -1,4 +1,5 @@
 public class Lead{
+    public Lead() {     }
     public int Id { get; set; }
     public int OwnerId { get; set; }
     public string first_name { get; set; } = string.Empty;
