@@ -1,5 +1,5 @@
  resource "azurerm_postgresql_server" "psql_server" {
-  name                = "cdv-devops-final-psql-dev-1"
+  name                = "${var.prefix}-${var.application}-${var.environment}-psql-dev-1"
   resource_group_name = var.resource_group_name
   location            = var.location
 
