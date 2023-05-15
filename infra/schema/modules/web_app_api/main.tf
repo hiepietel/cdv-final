@@ -30,7 +30,7 @@ resource "azurerm_linux_web_app" "webapp" {
   connection_string {
   name = "DefaultConnection"
   type = "PostgreSQL"
-  value = "Server=${var.prefix}-${var.application}-${var.environment}-psql-dev-1.postgres.database.azure.com;Database=postgress;Port=5432;User Id=postgres@cdv-devops-final-psql-dev-1;Password=Q1w2e3r4t5y6.;Ssl Mode=Require;Trust Server Certificate=true"
+  value = "Server=${var.prefix}-${var.application}-${var.environment}-psql-dev-1.postgres.database.azure.com;Database=postgres;Port=5432;User Id=postgres@${var.prefix}-${var.application}-${var.environment}-psql-dev-1;Password=Q1w2e3r4t5y6.;Ssl Mode=Require;Trust Server Certificate=true"
   }
 
   app_settings = {
