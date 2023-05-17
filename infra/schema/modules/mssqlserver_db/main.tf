@@ -1,9 +1,9 @@
- resource "azurerm_mssql_server" "sql_server" {
+resource "azurerm_mssql_server" "sql_server" {
   name                = "${var.prefix}-${var.application}-${var.environment}-mssql-dev-1"
   resource_group_name = var.resource_group_name
   location            = var.location
 
-  version  = "12.0"
+  version = "12.0"
 
   administrator_login          = "mssqluser"
   administrator_login_password = "Q1w2e3r4t5y6."
@@ -26,9 +26,12 @@
 
 resource "azurerm_mssql_firewall_rule" "example" {
   name             = "${var.prefix}-${var.application}-${var.environment}-mssql-fw"
-  server_id        = azurerm_mssql_server.sql_server.id
+  server_id      = azurerm_mssql_server.sql_server.id
   start_ip_address = "0.0.0.0"
   end_ip_address   = "0.0.0.0"
+  depends_on = [
+    azurerm_mssql_server.sql_server
+  ]
 }
 
 # resource "azurerm_postgresql_firewall_rule" "psql_firewall_rule" {
@@ -45,13 +48,13 @@ resource "azurerm_mssql_database" "db" {
   name      = "testdb"
   server_id = azurerm_mssql_server.sql_server.id
   sku_name  = "Basic"
-   collation      = "SQL_Latin1_General_CP1_CI_AS"
+  collation = "SQL_Latin1_General_CP1_CI_AS"
   #license_type   = "LicenseIncluded"
   # max_size_gb    = 4
   #read_scale     = true
- # zone_redundant = true
+  # zone_redundant = true
 
-    tags = {
+  tags = {
     environment = var.environment
     application = var.application
     owner       = var.owner
