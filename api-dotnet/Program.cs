@@ -27,8 +27,10 @@ if (app.Environment.IsDevelopment())
 
 using (var scope = app.Services.CreateScope())
 {
+    Console.WriteLine("Creating DB");
     var appContext = scope.ServiceProvider.GetRequiredService<AppContext>();
-    await appContext.Database.MigrateAsync();
+    appContext.Database.EnsureCreated();;
+    //context.Database.EnsureCreated();
 }
 
 app.UseHttpsRedirection();
