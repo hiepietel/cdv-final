@@ -1,10 +1,5 @@
 name: Terraform Test Infrastructure
 on:
-    pull_request:
-      types:
-        - opened
-        - synchronize
-        - reopened
     workflow_dispatch:
 jobs:
     Test:
@@ -15,6 +10,12 @@ jobs:
             ARM_TENANT_ID: ${{ secrets.ARM_TENANT_ID }}
             ARM_CLIENT_ID: ${{ secrets.ARM_CLIENT_ID }}
             ARM_CLIENT_SECRET: ${{ secrets.ARM_CLIENT_SECRET }}
+            application: ${{ vars.APPLICATION }}
+            owner: ${{ vars.OWNER }}
+            location: ${{ vars.LOCATION }}
+            prefix: ${{ vars.PREFIX }}
+            admin_password: ${{ secrets.ADMIN_PASSWORD }}
+            environment: ${{ vars.ENVIRONMENT }}
         steps:
             - name: Checkout
               uses: actions/checkout@v3
@@ -43,12 +44,5 @@ jobs:
                 --var="location=${{ env.location }}" \
                 --var="prefix=${{ env.perfix }}" \
                 --var="admin_password=${{ env.admin_password }}" \
-                --var="environment=${{ env.environment }}"
+                --var="environment=${{ env.environment }}"    
               working-directory: ./infra/schema
-              env:
-                application: ${{ vars.APPLICATION }}
-                owner: ${{ vars.OWNER }}
-                location: ${{ vars.LOCATION }}
-                prefix: ${{ vars.PREFIX }}
-                admin_password: ${{ secrets.ADMIN_PASSWORD }}
-                environment: ${{ vars.ENVIRONMENT }}
