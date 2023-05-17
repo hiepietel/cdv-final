@@ -49,7 +49,7 @@ resource "azurerm_mssql_database" "db" {
   #license_type   = "LicenseIncluded"
   # max_size_gb    = 4
   #read_scale     = true
-  zone_redundant = true
+ # zone_redundant = true
 
     tags = {
     environment = var.environment
