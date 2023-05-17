@@ -2,7 +2,7 @@ module "resource_group" {
     source = "./modules/resource_group"
 
   application = var.application
-  environment = var.environment
+  environment = "all"
   owner       = var.owner
   location    = var.location
   prefix      = var.prefix
