@@ -5,7 +5,7 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddDbContext<AppContext>(options =>
 {
-    options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection"));
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
 });
 
 builder.Services.AddScoped<ILeadService, LeadService>();
@@ -25,11 +25,11 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-// using (var scope = app.Services.CreateScope())
-// {
-//     var appContext = scope.ServiceProvider.GetRequiredService<AppContext>();
-//     appContext.Database.Migrate();
-// }
+using (var scope = app.Services.CreateScope())
+{
+    var appContext = scope.ServiceProvider.GetRequiredService<AppContext>();
+    await appContext.Database.MigrateAsync();
+}
 
 app.UseHttpsRedirection();
 
