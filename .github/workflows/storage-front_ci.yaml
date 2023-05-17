@@ -33,7 +33,7 @@ jobs:
           uses: actions/upload-artifact@v3
           with:
             name: frontend
-            path: ./front/dist
+            path: ./front/build
     
   Deploy:
       runs-on: ubuntu-latest
