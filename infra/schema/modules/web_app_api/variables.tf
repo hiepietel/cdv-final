@@ -28,17 +28,17 @@ variable "location" {
   description = "Azure region"
 }
 
-variable "postgres_user" {
+variable "sql_user" {
   type        = string
   description = "Postgres DB username"
 }
 
-variable "postgres_host" {
+variable "sql_host" {
   type        = string
   description = "Postgres hostname"
 }
 
-variable "postgres_password" {
+variable "sql_password" {
   type        = string
   description = "Postgres DB password"
 }

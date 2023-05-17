@@ -3,7 +3,7 @@ resource "azurerm_service_plan" "asp" {
   resource_group_name = var.resource_group_name
   location            = var.location
   os_type             = "Linux"
-  sku_name            = "B1"
+  sku_name            = "B3"
 
   tags = {
     application = var.application
@@ -27,17 +27,17 @@ resource "azurerm_linux_web_app" "webapp" {
     }
   }
 
-  connection_string {
-  name = "DefaultConnection"
-  type = "PostgreSQL"
-  value = "Server=${var.prefix}-${var.application}-${var.environment}-psql-dev-1.postgres.database.azure.com;Database=postgres;Port=5432;User Id=postgres@${var.prefix}-${var.application}-${var.environment}-psql-dev-1;Password=Q1w2e3r4t5y6.;Ssl Mode=Require;Trust Server Certificate=true"
-  }
+  # connection_string {
+  # name = "DefaultConnection"
+  # type = "SQLServer"
+  # value = "Server=${var.prefix}-${var.application}-${var.environment}-sqlserver-dev-1..database.azure.com;Database=postgres;Port=5432;User Id=postgres@${var.prefix}-${var.application}-${var.environment}-psql-dev-1;Password=Q1w2e3r4t5y6.;Ssl Mode=Require;Trust Server Certificate=true"
+  # }
 
-  app_settings = {
-    POSTGRES_USER     = "${var.postgres_user}@${var.postgres_host}"
-    POSTGRES_PASSWORD = var.postgres_password
-    POSTGRES_HOST     = "${var.postgres_host}.postgres.database.azure.com"
-  }
+  # app_settings = {
+  #   POSTGRES_USER     = "${var.sql_user}@${var.hos}"
+  #   POSTGRES_PASSWORD = var.sql_password
+  #   POSTGRES_HOST     = "${var.sql_host}.postgres.database.azure.com"
+  # }
 
   tags = {
     application = var.application
