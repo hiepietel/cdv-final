@@ -48,8 +48,8 @@ resource "azurerm_mssql_database" "db" {
   sku_name  = "Basic"
 }
 
-resource "time_sleep" "wait_15_seconds" {
-  depends_on = [azurerm_mssql_database.db]
+# resource "time_sleep" "wait_15_seconds" {
+#   depends_on = [azurerm_mssql_database.db]
 
-  create_duration = "15s"
-}
+#   create_duration = "15s"
+# }
