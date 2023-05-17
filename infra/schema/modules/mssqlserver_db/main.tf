@@ -3,7 +3,6 @@
   resource_group_name = var.resource_group_name
   location            = var.location
 
-  #sku_name = "B_Gen5_1"
   version  = "12.0"
 
   administrator_login          = "mssqluser"
@@ -46,6 +45,17 @@ resource "azurerm_mssql_database" "db" {
   name      = "testdb"
   server_id = azurerm_mssql_server.sql_server.id
   sku_name  = "P1"
+   collation      = "SQL_Latin1_General_CP1_CI_AS"
+  license_type   = "LicenseIncluded"
+  max_size_gb    = 4
+  read_scale     = true
+  zone_redundant = true
+
+    tags = {
+    environment = var.environment
+    application = var.application
+    owner       = var.owner
+  }
 }
 
 # resource "time_sleep" "wait_15_seconds" {
