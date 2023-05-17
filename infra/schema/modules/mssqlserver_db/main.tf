@@ -6,7 +6,7 @@
   #sku_name = "B_Gen5_1"
   version  = "12.0"
 
-  administrator_login          = "postgres"
+  administrator_login          = "mssqluser"
   administrator_login_password = "Q1w2e3r4t5y6."
 
   #backup_retention_days        = 7
@@ -39,3 +39,17 @@ resource "azurerm_mssql_firewall_rule" "example" {
 #   start_ip_address    = "0.0.0.0"
 #   end_ip_address      = "0.0.0.0"
 # }
+
+
+# The Azure SQL Database used in tests
+resource "azurerm_mssql_database" "db" {
+  name      = "testdb"
+  server_id = azurerm_mssql_server.sql_server.id
+  sku_name  = "Basic"
+}
+
+resource "time_sleep" "wait_15_seconds" {
+  depends_on = [azurerm_mssql_database.db]
+
+  create_duration = "15s"
+}
