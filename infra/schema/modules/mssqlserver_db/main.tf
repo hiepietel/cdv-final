@@ -45,7 +45,7 @@ resource "azurerm_mssql_firewall_rule" "example" {
 resource "azurerm_mssql_database" "db" {
   name      = "testdb"
   server_id = azurerm_mssql_server.sql_server.id
-  sku_name  = "Basic"
+  sku_name  = "P1"
 }
 
 # resource "time_sleep" "wait_15_seconds" {
