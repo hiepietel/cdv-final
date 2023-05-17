@@ -20,7 +20,7 @@ jobs:
       application: ${{ vars.APPLICATION }}
       owner: ${{ vars.OWNER }}
       location: ${{ vars.LOCATION }}
-      perfix: ${{ vars.PREFIX }}
+      prefix: ${{ vars.PREFIX }}
       admin_password: ${{ secrets.ADMIN_PASSWORD }}
       environment: ${{ vars.ENVIRONMENT }}
     steps:
@@ -41,7 +41,7 @@ jobs:
           --var="environments=[\"${{ env.environment }}\"]" \
           --var="owner=${{ env.owner }}" \
           --var="location=${{ env.location }}" \
-          --var="prefix=${{ env.perfix }}" \
+          --var="prefix=${{ env.prefix }}" \
           --var="admin_password=${{ env.admin_password }}" \
           --var="environment=${{ env.environment }}" \
           --out=tfplan
