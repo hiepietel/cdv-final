@@ -44,7 +44,7 @@ resource "azurerm_mssql_firewall_rule" "example" {
 resource "azurerm_mssql_database" "db" {
   name      = "testdb"
   server_id = azurerm_mssql_server.sql_server.id
-  sku_name  = "P1"
+  sku_name  = "Basic"
    collation      = "SQL_Latin1_General_CP1_CI_AS"
   license_type   = "LicenseIncluded"
   max_size_gb    = 4
