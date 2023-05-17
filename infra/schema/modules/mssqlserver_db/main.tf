@@ -1,5 +1,5 @@
  resource "azurerm_mssql_server" "sql_server" {
-  name                = "${var.prefix}-${var.application}-${var.environment}-sqlserver-dev-1"
+  name                = "${var.prefix}-${var.application}-${var.environment}-mssql-dev-1"
   resource_group_name = var.resource_group_name
   location            = var.location
 
@@ -26,7 +26,7 @@
 }
 
 resource "azurerm_mssql_firewall_rule" "example" {
-  name             = "${var.prefix}-${var.application}-${var.environment}-sqlserver-fw"
+  name             = "${var.prefix}-${var.application}-${var.environment}-mssql-fw"
   server_id        = azurerm_mssql_server.sql_server.id
   start_ip_address = "0.0.0.0"
   end_ip_address   = "0.0.0.0"
