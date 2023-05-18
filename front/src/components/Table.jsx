@@ -54,6 +54,25 @@ const Table = () => {
   };
 
   useEffect(() => {
+
+    const getLeads = async () => {
+      const requestOptions = {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: "Bearer " + token,
+        },
+      };
+      const response = await fetch(process.env.REACT_APP_API_URL + "/api/leads", requestOptions);
+      if (!response.ok) {
+        setErrorMessage("Something went wrong. Couldn't load the leads");
+      } else {
+        const data = await response.json();
+        setLeads(data);
+        setLoaded(true);
+      }
+    };
+
     setLeads([]);
     setLoaded(false)
     getLeads();

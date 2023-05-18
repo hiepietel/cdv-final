@@ -3,7 +3,6 @@ import React, { createContext, useEffect, useState } from "react";
 export const UserContext = createContext();
 
 export const UserProvider = (props) => {
-  const api_url = process.env.REACT_APP_API_URL
   const [token, setToken] = useState(localStorage.getItem("awesomeLeadsToken"));
 
   useEffect(() => {
@@ -16,7 +15,7 @@ export const UserProvider = (props) => {
         },
       };
 
-      const response = await fetch(api_url + "/api/users/me", requestOptions);
+      const response = await fetch( process.env.REACT_APP_API_URL + "/api/users/me", requestOptions);
 
       if (!response.ok) {
         setToken(null);
