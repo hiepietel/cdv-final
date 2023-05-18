@@ -17,7 +17,7 @@ const LeadModal = ({ active, handleModal, token, id, setErrorMessage }) => {
           Authorization: "Bearer " + token,
         },
       };
-      const response = await fetch(api_url + `/api/leads/${id}`, requestOptions);
+      const response = await fetch(process.env.REACT_APP_API_URL + `/api/leads/${id}`, requestOptions);
 
       if (!response.ok) {
         //setErrorMessage("Could not get the lead");

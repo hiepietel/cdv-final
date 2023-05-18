@@ -6,28 +6,26 @@ import Table from "./components/Table";
 import { UserContext } from "./context/UserContext";
 
 const App = () => {
-  const api_url = process.env.REACT_APP_API_URL
   const [message, setMessage] = useState("");
   const [token] = useContext(UserContext);
 
-  const getWelcomeMessage = async () => {
-    const requestOptions = {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    };
-    const response = await fetch(api_url + "/api", requestOptions);
-    const data = await response.json();
-
-    if (!response.ok) {
-      console.log("something messed up");
-    } else {
-      setMessage(data.message);
-    }
-  };
-
   useEffect(() => {
+    const getWelcomeMessage = async () => {
+      const requestOptions = {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      };
+      const response = await fetch(process.env.REACT_APP_API_URL + "/api", requestOptions);
+      const data = await response.json();
+  
+      if (!response.ok) {
+        console.log("something messed up");
+      } else {
+        setMessage(data.message);
+      }
+    };
     getWelcomeMessage();
   }, []);
 
