@@ -61,7 +61,7 @@ const LeadModal = ({ active, handleModal, token, id, setErrorMessage }) => {
         note: note,
       }),
     };
-    const response = await fetch("https://cdv-test-dev-api.azurewebsites.net" + "/api/leads", requestOptions);
+    const response = await fetch(api_url + "/api/leads", requestOptions);
     if (!response.ok) {
       //setErrorMessage("Something went wrong when creating lead");
       console.log("Something went wrong when creating lead");
@@ -87,7 +87,7 @@ const LeadModal = ({ active, handleModal, token, id, setErrorMessage }) => {
         note: note,
       }),
     };
-    const response = await fetch("https://cdv-test-dev-api.azurewebsites.net" + `/api/leads/${id}`, requestOptions);
+    const response = await fetch(api_url + `/api/leads/${id}`, requestOptions);
     if (!response.ok) {
       //setErrorMessage("Something went wrong when updating lead");
       console.log("Something went wrong when updating lead");
