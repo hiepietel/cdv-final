@@ -6,7 +6,7 @@ import Table from "./components/Table";
 import { UserContext } from "./context/UserContext";
 
 const App = () => {
-  var api_url = process.env.REACT_APP_API_URL
+  const api_url = process.env.REACT_APP_API_URL
   const [message, setMessage] = useState("");
   const [token] = useContext(UserContext);
 

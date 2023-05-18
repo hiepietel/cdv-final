@@ -3,7 +3,7 @@ import React, { createContext, useEffect, useState } from "react";
 export const UserContext = createContext();
 
 export const UserProvider = (props) => {
-  var api_url = process.env.REACT_APP_API_URL
+  const api_url = process.env.REACT_APP_API_URL
   const [token, setToken] = useState(localStorage.getItem("awesomeLeadsToken"));
 
   useEffect(() => {

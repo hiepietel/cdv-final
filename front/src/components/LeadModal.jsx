@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 
 const LeadModal = ({ active, handleModal, token, id, setErrorMessage }) => {
-  var api_url = process.env.REACT_APP_API_URL
+  const api_url = process.env.REACT_APP_API_URL
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [company, setCompany] = useState("");

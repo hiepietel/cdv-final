@@ -4,7 +4,7 @@ import { UserContext } from "../context/UserContext";
 import ErrorMessage from "./ErrorMessage";
 
 const Register = () => {
-  var api_url = process.env.REACT_APP_API_URL
+  const api_url = process.env.REACT_APP_API_URL
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmationPassword, setConfirmationPassword] = useState("");

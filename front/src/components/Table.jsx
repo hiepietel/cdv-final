@@ -6,7 +6,7 @@ import LeadModal from "./LeadModal";
 import { UserContext } from "../context/UserContext";
 
 const Table = () => {
-  var api_url = process.env.REACT_APP_API_URL
+  const api_url = process.env.REACT_APP_API_URL
   const [token] = useContext(UserContext);
   const [leads, setLeads] = useState(null);
   const [errorMessage, setErrorMessage] = useState("");
