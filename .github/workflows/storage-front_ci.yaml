@@ -26,9 +26,11 @@ jobs:
           working-directory: ./front
 
         - name: Build frontend
-          run: CI=false REACT_APP_API_URL = ${{vars.PREFIX}}-${{vars.APPLICATION }}-${{vars.ENVIRONMENT}}-api.azurewebsites.net npm run build
+          run: CI=false npm run build
           working-directory: ./front
-  
+          env:
+            REACT_APP_API_URL: ${{vars.PREFIX}}-${{vars.APPLICATION }}-${{vars.ENVIRONMENT}}-api.azurewebsites.net
+            
         - name: Upload artifact
           uses: actions/upload-artifact@v3
           with:
