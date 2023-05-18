@@ -1,12 +1,10 @@
 import React, { useContext, useEffect, useState } from "react";
 import moment from "moment";
-
 import ErrorMessage from "./ErrorMessage";
 import LeadModal from "./LeadModal";
 import { UserContext } from "../context/UserContext";
 
 const Table = () => {
-  const api_url = process.env.REACT_APP_API_URL
   const [token] = useContext(UserContext);
   const [leads, setLeads] = useState(null);
   const [errorMessage, setErrorMessage] = useState("");
@@ -27,7 +25,7 @@ const Table = () => {
         Authorization: "Bearer " + token,
       },
     };
-    const response = await fetch(api_url + `/api/leads/${id}`, requestOptions);
+    const response = await fetch(process.env.REACT_APP_API_URL + `/api/leads/${id}`, requestOptions);
     if (!response.ok) {
       setErrorMessage("Failed to delete lead");
     }
@@ -43,7 +41,7 @@ const Table = () => {
         Authorization: "Bearer " + token,
       },
     };
-    const response = await fetch(api_url + "/api/leads", requestOptions);
+    const response = await fetch(process.env.REACT_APP_API_URL + "/api/leads", requestOptions);
     if (!response.ok) {
       setErrorMessage("Something went wrong. Couldn't load the leads");
     } else {

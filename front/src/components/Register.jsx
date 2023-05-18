@@ -1,10 +1,8 @@
 import React, { useContext, useState } from "react";
-
 import { UserContext } from "../context/UserContext";
 import ErrorMessage from "./ErrorMessage";
 
 const Register = () => {
-  const api_url = process.env.REACT_APP_API_URL
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmationPassword, setConfirmationPassword] = useState("");
@@ -18,7 +16,7 @@ const Register = () => {
       body: JSON.stringify({ email: email, hashed_password: password }),
     };
 
-    const response = await fetch(api_url + "/api/users", requestOptions);
+    const response = await fetch(process.env.REACT_APP_API_URL + "/api/users", requestOptions);
     const data = await response.json();
 
     if (!response.ok) {

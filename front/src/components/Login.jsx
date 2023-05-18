@@ -3,7 +3,6 @@ import ErrorMessage from "./ErrorMessage";
 import { UserContext } from "../context/UserContext";
 
 const Login = () => {
-  const api_url = process.env.REACT_APP_API_URL
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
@@ -18,7 +17,7 @@ const Login = () => {
       ),
     };
 
-    const response = await fetch(api_url + "/api/token", requestOptions);
+    const response = await fetch(process.env.REACT_APP_API_URL + "/api/token", requestOptions);
     const data = await response.json();
 
     if (!response.ok) {
