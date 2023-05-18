@@ -52,7 +52,6 @@ const Table = () => {
   };
 
   useEffect(() => {
-
     const getLeads = async () => {
       const requestOptions = {
         method: "GET",
