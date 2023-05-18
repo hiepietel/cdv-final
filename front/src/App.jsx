@@ -1,5 +1,4 @@
 import React, { useContext, useEffect, useState } from "react";
-
 import Register from "./components/Register";
 import Login from "./components/Login";
 import Header from "./components/Header";
@@ -17,7 +16,7 @@ const App = () => {
         "Content-Type": "application/json",
       },
     };
-    const response = await fetch("/api", requestOptions);
+    const response = await fetch(api_url + "/api", requestOptions);
     const data = await response.json();
 
     if (!response.ok) {

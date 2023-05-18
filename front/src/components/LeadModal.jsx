@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 
 const LeadModal = ({ active, handleModal, token, id, setErrorMessage }) => {
+  var api_url = process.env.REACT_APP_API_URL
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [company, setCompany] = useState("");
@@ -16,7 +17,7 @@ const LeadModal = ({ active, handleModal, token, id, setErrorMessage }) => {
           Authorization: "Bearer " + token,
         },
       };
-      const response = await fetch(`/api/leads/${id}`, requestOptions);
+      const response = await fetch(api_url + `/api/leads/${id}`, requestOptions);
 
       if (!response.ok) {
         //setErrorMessage("Could not get the lead");
@@ -60,7 +61,7 @@ const LeadModal = ({ active, handleModal, token, id, setErrorMessage }) => {
         note: note,
       }),
     };
-    const response = await fetch("/api/leads", requestOptions);
+    const response = await fetch("https://cdv-test-dev-api.azurewebsites.net" + "/api/leads", requestOptions);
     if (!response.ok) {
       //setErrorMessage("Something went wrong when creating lead");
       console.log("Something went wrong when creating lead");
@@ -86,7 +87,7 @@ const LeadModal = ({ active, handleModal, token, id, setErrorMessage }) => {
         note: note,
       }),
     };
-    const response = await fetch(`/api/leads/${id}`, requestOptions);
+    const response = await fetch("https://cdv-test-dev-api.azurewebsites.net" + `/api/leads/${id}`, requestOptions);
     if (!response.ok) {
       //setErrorMessage("Something went wrong when updating lead");
       console.log("Something went wrong when updating lead");
