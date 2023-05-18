@@ -1,11 +1,11 @@
-name: Build and deploy front
+name: Build and deploy front to web app
 on: 
-  push:
-    branches:
-      - master
-    paths:
-    - "front/**"
-    - ".github/workflows/front_ci.yaml"
+  # push:
+  #   branches:
+  #     - master
+  #   paths:
+  #   - "front/**"
+  #   - ".github/workflows/front_ci.yaml"
   workflow_dispatch:
 
 env:
