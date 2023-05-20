@@ -1,5 +1,5 @@
 resource "azurerm_storage_account" "storage" {
-  name                     = "sa3rjg934fg02${var.environment}"
+  name                     = "sa3r78934fg02${var.environment}"
   resource_group_name      = var.resource_group_name
   location                 = var.location
   account_kind             = "StorageV2"
