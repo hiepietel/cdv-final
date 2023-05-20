@@ -30,14 +30,14 @@ public class LeadController : ControllerBase
 
     [HttpGet]
     [Route("api/leads/{leadId}")]
-    public async Task<IActionResult> GetLead([FromQuery] int leadId)
+    public async Task<IActionResult> GetLead(int leadId)
     {
         return Ok(await _leadService.GetLead(leadId));
     }
 
     [HttpPut]
     [Route("api/leads/{leadId}")]
-    public async Task<IActionResult> UpdateLead([FromQuery] int leadId, [FromBody] Lead lead)
+    public async Task<IActionResult> UpdateLead(int leadId, [FromBody] Lead lead)
     {
         return Ok(new
         {
@@ -47,7 +47,7 @@ public class LeadController : ControllerBase
 
     [HttpDelete]
     [Route("api/leads/{leadId}")]
-    public async Task<IActionResult> DeleteLead([FromQuery] int leadId)
+    public async Task<IActionResult> DeleteLead(int leadId)
     {
         return Ok(new
         {

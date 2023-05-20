@@ -24,7 +24,7 @@ public class LeadService : ILeadService
         }
         _appContext.Leads.Remove(lead);
          await _appContext.SaveChangesAsync();
-        return "Successfully Updated";
+        return "Successfully Deleted";
     }
 
     public async Task<Lead> GetLead(int leadId)
@@ -45,7 +45,7 @@ public class LeadService : ILeadService
     {
         var leadToUpdate = await _appContext.Leads.FirstOrDefaultAsync(x => x.Id == leadId);
         if(leadToUpdate == null){
-            return "No lead Updated to update";
+            return "No Leads to update";
         }
         leadToUpdate.DateLastUpdated = DateTime.UtcNow;
         leadToUpdate.first_name = lead.first_name;
