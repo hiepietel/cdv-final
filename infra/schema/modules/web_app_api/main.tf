@@ -3,7 +3,7 @@ resource "azurerm_service_plan" "asp" {
   resource_group_name = var.resource_group_name
   location            = var.location
   os_type             = "Linux"
-  sku_name            = "B3"
+  sku_name            = "B1"
 
   tags = {
     application = var.application
@@ -34,11 +34,9 @@ resource "azurerm_linux_web_app" "webapp" {
   value = "Server=tcp:${var.prefix}-${var.application}-${var.environment}-mssql-dev-1.database.windows.net,1433;Initial Catalog=testdb;Persist Security Info=False;User ID=mssqluser;Password=Q1w2e3r4t5y6.;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;"
   }
 
-  # app_settings = {
-  #   POSTGRES_USER     = "${var.sql_user}@${var.hos}"
-  #   POSTGRES_PASSWORD = var.sql_password
-  #   POSTGRES_HOST     = "${var.sql_host}.postgres.database.azure.com"
-  # }
+  app_settings = {
+    Token     = "SampleImportantToken"
+  }
 
   tags = {
     application = var.application
