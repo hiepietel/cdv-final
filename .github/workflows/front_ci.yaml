@@ -83,7 +83,7 @@ jobs:
           run: npm install
           working-directory: ./front
         - name: Build app
-          run: npm run CI=false build --prefix front/
+          run: CI=false npm run build --prefix front/
   
         - name: Zip build folder
           run: |
