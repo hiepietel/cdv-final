@@ -16,10 +16,9 @@ const LeadModal = ({ active, handleModal, token, id, setErrorMessage }) => {
           Authorization: "Bearer " + token,
         },
       };
-      const response = await fetch( ""+process.env.REACT_APP_API_URL + `/api/leads/${id}`, requestOptions);
-      https://cdv-test-dev-api.azurewebsites.net/
+      const response = await fetch( process.env.REACT_APP_API_URL + `/api/leads/${id}`, requestOptions);
       if (!response.ok) {
-        //setErrorMessage("Could not get the lead");
+        setErrorMessage("Could not get the lead");
         console.log("Could not get the lead");
       } else {
         const data = await response.json();
