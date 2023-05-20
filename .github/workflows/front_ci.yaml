@@ -1,18 +1,29 @@
 name: Build and deploy front to web app
 on: 
-  # push:
-  #   branches:
-  #     - master
-  #   paths:
-  #   - "front/**"
-  #   - ".github/workflows/front_ci.yaml"
   workflow_dispatch:
 
 env:
-  AZURE_WEBAPP_NAME: front-mini   # set this to your application's name
-  AZURE_WEBAPP_PACKAGE_PATH: 'front-mini'      # set this to the path to your web app project, defaults to the repository root
+  AZURE_WEBAPP_NAME: front   # set this to your application's name
+  AZURE_WEBAPP_PACKAGE_PATH: 'front'      # set this to the path to your web app project, defaults to the repository root
   NODE_VERSION: '18.x'       
 jobs:
+    # Test: 
+    #     runs-on: ubuntu-latest
+    #     steps: 
+    #         - name: Checkout
+    #           uses: actions/checkout@v3
+              
+    #         - name: Install depenedencies
+    #           run: npm ci 
+    #           working-directory: ./front-mini
+
+    #         # - name: Lint code
+    #         #   run: npm run lint
+    #         #   working-directory: ./front-mini
+
+    #         - name: Test code
+    #           run: npm run test
+    #           working-directory: ./front-mini
     
     Build: 
         runs-on: ubuntu-latest
@@ -25,21 +36,52 @@ jobs:
           uses: actions/setup-node@v1
           with:
             node-version: ${{ env.NODE_VERSION }}
-        
-        - name: Cache dependencies
-          uses: actions/cache@v3
-          with:
-            path: ~/.npm
-            key: node-modules-${{ hashFiles('**/package-lock.json') }}
+        # - name: Cache dependencies
+        #   uses: actions/cache@v2
+        #   with:
+        #     path: ~/.npm
+        #     key: npm-${{ hashFiles('package-lock.json') }}
+        #     restore-keys: npm-
     
-        - name: Install dependencies
-          run: npm ci --ignore-scripts
-          working-directory: ./front
-
         # - name: Install dependencies
-        #   run: npm install
+        #   run: npm ci --ignore-scripts
         #   working-directory: ./front-mini
 
+        # # - name: Install dependencies
+        # #   run: npm install
+        # #   working-directory: ./front-mini
+
+        # - name: npm install, build, and test
+        #   run: |
+        #     # Build and test the project, then
+        #     # deploy to Azure Web App.
+        #     npm run build --if-present         
+        #   working-directory: ./front-mini
+        # - name: ls 
+        #   run: |
+        #     ls -a  
+        #     pwd -P
+        #   working-directory: ./front-mini
+
+        #       # Zip artifacts to speed things up
+        # - name: Zip artifact for deployment
+        #   run: zip release.zip ./build/* -r
+        #   working-directory: ./front-mini
+        
+        # - name: ls 2
+        #   run: |
+        #     ls -a    
+        #     dir   
+        #   working-directory: ./front-mini
+
+        # - name: Upload artifact for deployment job
+        #   uses: actions/upload-artifact@v2
+        #   with:
+        #     name: front-mini
+        #     path: ./front-mini/release.zip
+        - name: Install dependencies
+          run: npm install
+          working-directory: ./front
         - name: Build app
           run: npm run build --prefix front/
   
@@ -52,12 +94,26 @@ jobs:
           uses: actions/upload-artifact@v2
           with:
             name: build
-            path: front/build.zip
+            path: front-mini/build.zip
+        # - name: Upload artifact
+        #   uses: actions/upload-artifact@v3
+        #   with:
+        #     name: node_build
+        #     path: front-mini
 
+#npm run build --if-present
+#npm run test --if-present
         - name: Azure Login
           uses: azure/login@v1
           with: 
             creds: '{"clientId":"${{ secrets.ARM_CLIENT_ID }}","clientSecret":"${{ secrets.ARM_CLIENT_SECRET }}","subscriptionId":"${{ secrets.ARM_SUBSCRIPTION_ID }}","tenantId":"${{ secrets.ARM_TENANT_ID }}"}'  
+        # - name: Download artifact from build job
+        #   uses: actions/download-artifact@v2
+        #   with:
+        #     name: node_build
+        
+        # - name: unzip artifact for deployment
+        #   run: unzip ./front-mini/release.zip
 
         - name: 'Deploy to Azure WebApp'
           uses: azure/webapps-deploy@v1
