@@ -20,10 +20,11 @@ public class LeadService : ILeadService
     {
         var lead = await _appContext.Leads.FirstOrDefaultAsync(x => x.Id == leadId);
         if(lead == null){
-            return "";
+            return "No lead to delete";
         }
         _appContext.Leads.Remove(lead);
-        return "";
+         await _appContext.SaveChangesAsync();
+        return "Successfully Updated";
     }
 
     public async Task<Lead> GetLead(int leadId)
@@ -44,7 +45,7 @@ public class LeadService : ILeadService
     {
         var leadToUpdate = await _appContext.Leads.FirstOrDefaultAsync(x => x.Id == leadId);
         if(leadToUpdate == null){
-            return "";
+            return "No lead Updated to update";
         }
         leadToUpdate.DateLastUpdated = DateTime.UtcNow;
         leadToUpdate.first_name = lead.first_name;
@@ -53,6 +54,6 @@ public class LeadService : ILeadService
         leadToUpdate.company = lead.company;
         leadToUpdate.note = lead.note;
         await _appContext.SaveChangesAsync();
-        return "";
+        return "Successfully Updated";
     }
 }

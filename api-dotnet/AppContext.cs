@@ -8,10 +8,7 @@ public class AppContext : DbContext
     //     _configuration = configuration;
     // }
     public AppContext(DbContextOptions<AppContext> options)
-        : base(options)
-    {
-        this.Database.EnsureCreated();
-    }
+        : base(options) => this.Database.EnsureCreated();
 
     public DbSet<User> Users { get; set; }
     public DbSet<Lead> Leads { get; set; }
