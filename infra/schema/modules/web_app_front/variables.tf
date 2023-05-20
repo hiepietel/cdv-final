@@ -28,8 +28,8 @@ variable "location" {
   description = "Azure region"
 }
 
-variable "api_url" {
-  type        = string
-  description = "API url"
-}
+# variable "api_url" {
+#   type        = string
+#   description = "API url"
+# }
 

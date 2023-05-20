@@ -3,7 +3,7 @@ resource "azurerm_service_plan" "asp" {
   resource_group_name = var.resource_group_name
   location            = var.location
   os_type             = "Linux"
-  sku_name            = "B1"
+  sku_name            = "B3"
 
   tags = {
     application = var.application
@@ -26,7 +26,7 @@ resource "azurerm_linux_web_app" "webapp" {
 
 
   app_settings = {
-    API_URL = var.api_url
+    REACT_APP_API_URL = "https://${var.prefix}-${var.application }-${var.environment}-api.azurewebsites.net"
   }
 
   tags = {

@@ -46,3 +46,18 @@ module "storage_front" {
   location            = var.location
   resource_group_name = module.resource_group.resource_group_name
 }
+
+module "web_app_front" {
+  source = "./modules/web_app_front"
+
+  prefix      = var.prefix
+  application = var.application
+  environment = var.environment
+  owner       = var.owner
+
+  resource_group_name = module.resource_group.resource_group_name
+  location            = var.location
+
+  # api_url = var.api_url
+  #  api_url = module.web_app_api.api_url
+}
