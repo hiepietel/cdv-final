@@ -39,10 +39,9 @@ public class LeadController : ControllerBase
     [Route("api/leads/{leadId}")]
     public async Task<IActionResult> UpdateLead([FromQuery] int leadId, [FromBody] Lead lead)
     {
-        await _leadService.UpdateLead(leadId, lead);
         return Ok(new
         {
-            message = "Successfully Updated"
+            message = await _leadService.UpdateLead(leadId, lead)
         });
     }
 
@@ -50,10 +49,9 @@ public class LeadController : ControllerBase
     [Route("api/leads/{leadId}")]
     public async Task<IActionResult> DeleteLead([FromQuery] int leadId)
     {
-        await _leadService.DeleteLead(leadId);
         return Ok(new
         {
-            message = "Successfully Deleted"
+            message = await _leadService.DeleteLead(leadId)
         });
     }
 }
