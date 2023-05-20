@@ -52,11 +52,13 @@ const Table = () => {
   };
 
   useEffect(() => {
+    
     const getLeads = async () => {
       const requestOptions = {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
+          // eslint-disable-next-line react-hooks/exhaustive-deps
           Authorization: "Bearer " + token,
         },
       };
@@ -73,7 +75,7 @@ const Table = () => {
     setLeads([]);
     setLoaded(false)
     getLeads();
-  }, []);
+  }, [token]);
 
   const handleModal = () => {
     setActiveModal(!activeModal);

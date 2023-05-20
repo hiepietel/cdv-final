@@ -10,6 +10,7 @@ const App = () => {
   const [token] = useContext(UserContext);
 
   useEffect(() => {
+    
     const getWelcomeMessage = async () => {
       const requestOptions = {
         method: "GET",
