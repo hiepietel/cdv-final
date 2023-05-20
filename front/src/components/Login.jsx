@@ -11,10 +11,12 @@ const Login = () => {
   const submitLogin = async () => {
     const requestOptions = {
       method: "POST",
-      headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      body: JSON.stringify(
-        `grant_type=&username=${email}&password=${password}&scope=&client_id=&client_secret=`
-      ),
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email: email, hashed_password: password }),
+      // headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      // body: JSON.stringify(
+      //   `grant_type=&username=${email}&password=${password}&scope=&client_id=&client_secret=`
+      // ),
     };
 
     const response = await fetch(process.env.REACT_APP_API_URL + "/api/token", requestOptions);
