@@ -118,7 +118,8 @@ jobs:
         - name: 'Deploy to Azure WebApp'
           uses: azure/webapps-deploy@v1
           with: 
-            app-name: '${{vars.PREFIX}}-${{vars.APPLICATION }}-${{vars.ENVIRONMENT}}-front'
+            app-name: '${{vars.PREFIX}}-terraform1-${{vars.ENVIRONMENT}}-front'
+            #app-name: '${{vars.PREFIX}}-${{vars.APPLICATION }}-${{vars.ENVIRONMENT}}-front'
             package: front-mini/build.zip
 
         - name: Remove artifact
