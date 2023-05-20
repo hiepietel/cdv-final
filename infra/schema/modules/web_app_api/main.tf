@@ -35,7 +35,7 @@ resource "azurerm_linux_web_app" "webapp" {
   }
 
   app_settings = {
-    Token     = "SampleImportantToken"
+    AppSettings__Token     = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9"
   }
 
   tags = {
