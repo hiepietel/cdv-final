@@ -94,7 +94,7 @@ jobs:
           uses: actions/upload-artifact@v2
           with:
             name: build
-            path: front-mini/build.zip
+            path: front/build.zip
         # - name: Upload artifact
         #   uses: actions/upload-artifact@v3
         #   with:
