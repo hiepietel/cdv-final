@@ -40,5 +40,6 @@ app.UseAuthorization();
 app.MapControllers();
 
 app.MapGet("/api", () => "Awesome Leads Manager");
+app.MapGet("/", () => "200 OK");
 
 app.Run();
